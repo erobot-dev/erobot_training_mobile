@@ -1,13 +1,24 @@
 import 'package:erobot_training/calculator.dart';
+import 'package:erobot_training/calculator_homework.dart';
 import 'package:erobot_training/light_homework.dart';
+import 'package:erobot_training/test_get_widget.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatelessWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    List<Widget> listScreen = [
+      LightHomeWork(),
+      Calculator(),
+      TestGetWidget(),
+      CalculatorHomeWork(),
+    ];
+    List<String> labels = [
+      'Light HomeWork',
+      'Calculator',
+      'Test Get Widget',
+      'Calculator Homework',
+    ];
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -19,7 +30,7 @@ class MyHomePage extends StatelessWidget {
             Icons.face,
           ),
         ),
-        title: Text('Testing'),
+        title: Text('Home'),
         actions: [
           IconButton(
             onPressed: () {
@@ -32,36 +43,32 @@ class MyHomePage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LightHomeWork();
-                    },
-                  ),
-                );
-              },
-              child: Text('Light Homework'),
+          children: List.generate(
+            listScreen.length,
+            (index) => buildTextButton(
+              context,
+              screen: listScreen[index],
+              label: labels[index],
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return CalculatorHomeWork();
-                    },
-                  ),
-                );
-              },
-              child: Text('Calculator home work'),
-            ),
-          ],
+          ),
         ),
       ),
+    );
+  }
+
+  TextButton buildTextButton(
+    BuildContext context, {
+    required Widget screen,
+    required String label,
+  }) {
+    return TextButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => screen),
+        );
+      },
+      child: Text(label),
     );
   }
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
-class CalculatorHomeWork extends StatefulWidget {
+class Calculator extends StatefulWidget {
   @override
-  _CalculatorHomeWorkState createState() => _CalculatorHomeWorkState();
+  _CalculatorState createState() => _CalculatorState();
 }
 
-class _CalculatorHomeWorkState extends State<CalculatorHomeWork> {
+class _CalculatorState extends State<Calculator> {
   String equation = "0";
   String result = "0";
   String expression = "";

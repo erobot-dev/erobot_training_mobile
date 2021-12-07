@@ -24,7 +24,7 @@ class _LightHomeWorkState extends State<LightHomeWork> {
     String lightoff = 'assets/images/LED-OFF.png';
 
     return Scaffold(
-      backgroundColor: on ? Colors.amber : Colors.black,
+      backgroundColor: Colors.white, //on ? Colors.amber : Colors.black,
       appBar: AppBar(
         title: Text('Light'),
         centerTitle: true,
@@ -49,7 +49,7 @@ class _LightHomeWorkState extends State<LightHomeWork> {
           ),
           Text(
             on ? 'OFF' : 'ON',
-            style: TextStyle(color: on ? Colors.black : Colors.white),
+            style: TextStyle(color: on ? Colors.black : Colors.black),
           ),
           IconButton(
             color: on ? Colors.amber[200] : Colors.red[200],
